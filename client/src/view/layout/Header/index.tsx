@@ -1,5 +1,7 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+
+import NavMenu from "./NavMenu";
 
 import Icon from "../../common/Icon";
 import Logo from "../../../images/logo.png";
@@ -9,35 +11,41 @@ import UserIcon from "../../../images/icons/user.svg";
 
 import { WrapHeader, Profile, WrapLogo } from "./styles";
 
-type RootState = {
-  authStore: any;
-};
-
 const Header: React.FC = () => {
   let history = useHistory();
-  const titles = history.location.pathname.split("/");
 
   return (
-    <WrapHeader>
-      <WrapLogo>
-        <img src={Logo} alt="logo" />
-      </WrapLogo>
-
-      <Profile>
-        {false ? (
-          <>
-            <div>UserName</div>
-            <Icon onClick={() => console.log("exit")} icon={UserIcon} />
-            <Icon onClick={() => {}} icon={ExitIcon} />
-          </>
+    <>
+      <WrapHeader>
+        {history.location.pathname === "/" ? (
+          <WrapLogo>
+            <img src={Logo} alt="logo" />
+          </WrapLogo>
         ) : (
-          <Icon
-            onClick={() => history.push("/auth/sign-in")}
-            icon={EnterIcon}
-          />
+          <Link to="/">
+            <WrapLogo>
+              <img src={Logo} alt="logo" />
+            </WrapLogo>
+          </Link>
         )}
-      </Profile>
-    </WrapHeader>
+
+        <Profile>
+          {false ? (
+            <>
+              <div>UserName</div>
+              <Icon onClick={() => console.log("exit")} icon={UserIcon} />
+              <Icon onClick={() => {}} icon={ExitIcon} />
+            </>
+          ) : (
+            <Icon
+              onClick={() => history.push("/auth/sign-in")}
+              icon={EnterIcon}
+            />
+          )}
+        </Profile>
+      </WrapHeader>
+      <NavMenu />
+    </>
   );
 };
 

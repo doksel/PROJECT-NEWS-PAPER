@@ -33,7 +33,8 @@ export const theme = {
 
   borders: {
     main: "1px solid darkslategray",
-    main_hover: "1px solid lightslategray"
+    main_hover: "1px solid lightslategray",
+    error: "1px solid crimson"
   },
 
   fonts: {

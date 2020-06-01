@@ -1,7 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import { WrapFooter } from "./styles";
+import Icon from "../../common/Icon";
+import Logo from "../../../images/logo.png";
+
+import { WrapFooter, WrapLogo } from "./styles";
 
 const Footer: React.FC = () => {
   let history = useHistory();
@@ -9,9 +12,9 @@ const Footer: React.FC = () => {
 
   return (
     <WrapFooter>
-      <h2>
-        Footer : {titles.length === 2 ? "Main page" : titles[titles.length - 1]}
-      </h2>
+      <WrapLogo>
+        <img src={Logo} alt="logo" />
+      </WrapLogo>
     </WrapFooter>
   );
 };

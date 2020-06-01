@@ -9,9 +9,9 @@ const List: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    console.log("Welcom to List Categories");
   }, []);
-  return <Wrapper>List Users</Wrapper>;
+  return <Wrapper>List Categories</Wrapper>;
 };
 
 export default List;

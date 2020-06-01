@@ -17,3 +17,13 @@ export const breakpointsLayout: breakpointsLayoutTypes = {
 };
 
 export const ERROR_MESSAGE: string = "Щось пішло не так. Спробуйте пізніше";
+
+export const menuLinks = [
+  { name: "About Us", to: "/about-us" },
+  { name: "Categories", to: "/categories" },
+  { name: "Business", to: "/business" },
+  { name: "Politics", to: "/politics" },
+  { name: "Travel", to: "/travel" },
+  { name: "Sports", to: "/sports" },
+  { name: "Contacts", to: "/contacts" }
+];
