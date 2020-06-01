@@ -1,21 +1,45 @@
 import express from "express";
 import path from "path";
 import cors from "cors";
+import swaggerUi from "swagger-ui-express";
+import swaggerJSDoc from "swagger-jsdoc";
 
 import { isProduction } from "./config";
-
 import * as routers from "./routes";
 
 const app = express();
+
+const swaggerOptions = {
+  swaggerDefinition: {
+      info: {
+          title: 'Blog License API', // Title (required)
+          version: '1.0.0' // Version (required)
+      },
+      securityDefinitions: {
+          jwt: {
+              type: 'apiKey',
+              name: 'Authorization',
+              in: 'header'
+          }
+      },
+      security: [
+          { jwt: [] }
+      ]
+  },
+  apis: [  // Path to the API docs
+      path.join(__dirname, 'routes/*.js')
+  ]
+};
+
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
+app.use(path.join(process.env.API_BASE,'/api-docs'), swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
-// app.use(`/auth`, routers.auth);
 app.use(path.join(process.env.API_BASE,'/auth'),  routers.auth);
-// app.use(`/users`, routers.users);
 app.use(path.join(process.env.API_BASE,'/users'),  routers.users);
 
 // default
