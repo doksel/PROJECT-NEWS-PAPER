@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import Users from "../../resources/users";
+import Categories from "../../resources/categories";
 
 import Header from "../../layout/Header";
 import Content from "../../layout/Content";
@@ -18,8 +18,12 @@ const CategoriesPage: React.FC = () => {
 
       <Content>
         <MainTitle>Categories List Page</MainTitle>
-        <Route path="/categories" exact component={Users.list} />
-        <Route path="/categories/:id?/review" exact component={Users.review} />
+        <Route path="/categories" exact component={Categories.list} />
+        <Route
+          path="/categories/:id?/review"
+          exact
+          component={Categories.review}
+        />
       </Content>
 
       <Footer />

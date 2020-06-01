@@ -7,7 +7,7 @@ export const WrapHeader = styled.div`
   padding: 20px;
   height: 70px;
   color: #fff;
-  background: ${props => props.theme.colors.error};
+  background: ${props => props.theme.colors.red};
   box-shadow: 2px 2px 8px 1px ${props => props.theme.colors.disabled};
 
   .burger-menu {
@@ -64,7 +64,7 @@ export const WrapLink = styled.div`
 
   &:hover {
     color: #fff;
-    background: ${props => props.theme.colors.error};
+    background: ${props => props.theme.colors.red};
     border-top: ${props => props.theme.borders.main_hover};
     border-bottom: ${props => props.theme.borders.main_hover};
     transition: all 0.5s;
