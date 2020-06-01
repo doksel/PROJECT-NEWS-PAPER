@@ -27,6 +27,15 @@ export const WrapHeader = styled.div`
   }
 `;
 
+export const WrapLogo = styled.div`
+  width: 150px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+
 export const Profile = styled.div`
   display: flex;
   align-items: center;

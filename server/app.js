@@ -12,7 +12,7 @@ const app = express();
 const swaggerOptions = {
   swaggerDefinition: {
       info: {
-          title: 'Blog License API', // Title (required)
+          title: 'The News Paper License API', // Title (required)
           version: '1.0.0' // Version (required)
       },
       securityDefinitions: {

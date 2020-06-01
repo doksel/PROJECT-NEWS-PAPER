@@ -1,11 +1,14 @@
 import React from "react";
+import { Route } from "react-router-dom";
 
-import { MainTitle, Title } from "./styles";
+import LoginPage from "./LoginPage";
+import RegisterPage from "./RegisterPage";
 
 const AuthPage: React.FC = () => {
   return (
     <>
-      <MainTitle>Auth page</MainTitle>
+      <Route path="/auth/sign-in" exact render={() => <LoginPage />} />
+      <Route path="/auth/sign-up" exact render={() => <RegisterPage />} />
     </>
   );
 };

@@ -2,11 +2,12 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import Icon from "../../common/Icon";
+import Logo from "../../../images/logo.png";
 import ExitIcon from "../../../images/icons/exit.svg";
 import EnterIcon from "../../../images/icons/enter.svg";
 import UserIcon from "../../../images/icons/user.svg";
 
-import { WrapHeader, Profile } from "./styles";
+import { WrapHeader, Profile, WrapLogo } from "./styles";
 
 type RootState = {
   authStore: any;
@@ -18,22 +19,22 @@ const Header: React.FC = () => {
 
   return (
     <WrapHeader>
-      <h2>
-        Header : {titles.length === 2 ? "Main page" : titles[titles.length - 1]}
-      </h2>
+      <WrapLogo>
+        <img src={Logo} alt="logo" />
+      </WrapLogo>
 
       <Profile>
         {false ? (
           <>
             <div>UserName</div>
-            <Icon
-              onClick={() => history.push("/admin/account/profile")}
-              icon={UserIcon}
-            />
+            <Icon onClick={() => console.log("exit")} icon={UserIcon} />
             <Icon onClick={() => {}} icon={ExitIcon} />
           </>
         ) : (
-          <Icon onClick={() => console.log("enter")} icon={EnterIcon} />
+          <Icon
+            onClick={() => history.push("/auth/sign-in")}
+            icon={EnterIcon}
+          />
         )}
       </Profile>
     </WrapHeader>

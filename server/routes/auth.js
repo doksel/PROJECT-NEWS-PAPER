@@ -9,7 +9,7 @@ import {sendMail} from "../common/mailer"
 
 const router = Router();
 
-router.post('/register',
+router.post('/sign-up',
 [
   check("email", "Email isn't correct").isEmail(),
   check("password", "Min length of password is 6").isLength({min:6})
@@ -65,7 +65,7 @@ async (req,res)=>{
   }
 })
 
-router.post('/login',
+router.post('/sign-in',
 [
   check("email", "Enter correct email").normalizeEmail().isEmail(),
   check("password", "Enter password").exists()

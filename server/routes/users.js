@@ -87,6 +87,23 @@ async (req,res)=>{
   }
 })
 
+/**
+ * @swagger
+ * /v1/api/users/account:
+ *   get:
+ *     tags:
+ *       - Users
+ *     description: Get your account
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       201:
+ *         description: User data
+ *       401:
+ *         description: Get failed, user not authorized.
+ *       404:
+ *         description: Get failed, entity not found.
+ */
 router.get('/account',
 async (req,res)=>{  
   try{

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ParamsUsersType } from "../../api/users";
 import api from "../../api";
 
-import { AppDispatch } from "..";
+import { AppDispatchType } from "..";
 
 type UserType = {
   firstName: string;
@@ -30,7 +30,6 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     getUsersSuccess(state, { payload }) {
-      console.log("payload", payload);
       return {
         ...state,
         users: [...payload.users]
@@ -50,19 +49,19 @@ export const { getUsersSuccess, getUsersFailed } = usersSlice.actions;
 export default usersSlice.reducer;
 
 export const fetchUsers = (params?: ParamsUsersType) => async (
-  dispatch: AppDispatch
+  dispatch: AppDispatchType
 ) => {
   try {
     const { data } = await api.users.getUsers(params);
-    console.log("data", data);
-
     dispatch(getUsersSuccess(data));
   } catch (error) {
     dispatch(getUsersFailed(error.toString()));
   }
 };
 
-export const fetchUserById = (id: number) => async (dispatch: AppDispatch) => {
+export const fetchUserById = (id: number) => async (
+  dispatch: AppDispatchType
+) => {
   try {
     const { data } = await api.users.getUserById(id);
     dispatch(getUsersSuccess(data));

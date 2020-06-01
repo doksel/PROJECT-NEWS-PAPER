@@ -34,7 +34,7 @@ const fetchData = ({ dispatch, getState }: FetchDataType) => (next: any) => (
       dispatch(fetchUsers());
       return next(action.payload);
     case SET_USER:
-      dispatch(fetchUserById(action.payload.data.id));
+      dispatch(fetchUserById(action.payload.id));
       return next(action);
 
     default:

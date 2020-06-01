@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import users from "./users";
+import auth from "./auth";
 
 import store from "../store";
 
@@ -19,5 +20,6 @@ export const setHeader = () => {
 };
 
 export default {
-  users
+  users,
+  auth
 };
