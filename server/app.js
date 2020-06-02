@@ -3,6 +3,7 @@ import path from "path";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
+import multer from "multer";
 
 import { isProduction } from "./config";
 import * as routers from "./routes";
@@ -41,6 +42,7 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 
 app.use(path.join(process.env.API_BASE,'/auth'),  routers.auth);
 app.use(path.join(process.env.API_BASE,'/users'),  routers.users);
+app.use(path.join(process.env.API_BASE,'/upload'),  routers.upload);
 
 // default
 app.get("*", (req, res) => {

@@ -1,7 +1,8 @@
 import axios from "axios";
 
-import users from "./users";
 import auth from "./auth";
+import users from "./users";
+import fileUpload from "./fileUpload";
 
 import store from "../store";
 
@@ -20,6 +21,7 @@ export const setHeader = () => {
 };
 
 export default {
+  auth,
   users,
-  auth
+  fileUpload
 };

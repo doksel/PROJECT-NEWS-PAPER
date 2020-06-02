@@ -25,7 +25,6 @@ const fetchData = ({ dispatch, getState }: FetchDataType) => (next: any) => (
       (typeof action.payload === "object" && action.payload) || {},
       "type"
     ) && action.payload;
-  console.log({ action, payload: action.payload, type });
 
   switch (type) {
     case INIT:

@@ -16,7 +16,7 @@ const NavMenu: React.FC = () => {
     <WrapNavMenu>
       {menuLinks.map(link => {
         return (
-          <WrapLink>
+          <WrapLink key={link.name}>
             <Link to={link.to}>{link.name}</Link>
           </WrapLink>
         );

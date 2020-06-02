@@ -1,36 +1,10 @@
-@import "../../../styles/theme.less";
+import styled from "styled-components";
 
-.files {
+export const Wrapper = styled.div`
   width: max-content;
+`;
 
-  .file {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-
-    &_name {
-      margin-right: 10px;
-      text-decoration: none;
-      color: initial;
-    }
-
-    &_delete {
-      cursor: pointer;
-
-      img {
-        width: 20px;
-        height: 100%;
-      }
-    }
-
-    &_accepts {
-      font-size: 12px;
-      color: @primary-color;
-    }
-  }
-}
-
-.label_upload {
+export const Label = styled.label`
   position: relative;
   background-color: #cce0ff;
   border: @primary-color 1px solid;
@@ -100,4 +74,4 @@
     width: 100%;
     height: 100%;
   }
-}
+`;
