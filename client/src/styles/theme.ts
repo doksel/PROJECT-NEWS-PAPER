@@ -45,5 +45,22 @@ export const theme = {
   }
 };
 
+type StyleType = {
+  justifyContent?: string;
+  alignItems?: string;
+};
+
+export const Row = styled.div<StyleType>`
+  display: flex;
+  justify-content: ${props =>
+    props.justifyContent ? props.justifyContent : "inherit"};
+  align-items: ${props => (props.alignItems ? props.alignItems : "inherit")};
+`;
+
+export const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export { css, ThemeProvider };
 export default styled;

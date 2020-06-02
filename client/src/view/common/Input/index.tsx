@@ -66,9 +66,9 @@ const Input: React.FC<InputTypes & CustomInputTypes> = ({
         disabled={disabled}
         maxLength={maxLength}
         onKeyUp={mask && ((e: FormEvent<HTMLFormElement>) => mask(e, input))}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          input.onChange(e.target.value)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          input.onChange(e.target.value);
+        }}
       />
 
       {touched && error && <span className="error">{error}</span>}

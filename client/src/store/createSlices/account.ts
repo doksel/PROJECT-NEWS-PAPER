@@ -35,12 +35,6 @@ const authSlice = createSlice({
         [payload.type]: payload.data
       };
     },
-    setInputValue(state, { payload }) {
-      return {
-        ...state,
-        [payload.name]: payload.value
-      };
-    },
     signInSuccess(state, { payload }) {
       return {
         ...state,
@@ -58,7 +52,6 @@ const authSlice = createSlice({
 
 export const {
   setStateValue,
-  setInputValue,
   signInSuccess,
   signUpSuccess
 } = authSlice.actions;

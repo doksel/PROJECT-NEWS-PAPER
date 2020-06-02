@@ -1,10 +1,9 @@
 import _ from "lodash";
 
-import { fetchUsers, fetchUserById } from "../store/createSlices/users";
+import { fetchUsers } from "../store/createSlices/users";
 
 const INIT = "init";
 const SET_USERS = "users";
-const SET_USER = "user";
 
 type FetchDataType = {
   dispatch?: any;
@@ -21,8 +20,12 @@ const fetchData = ({ dispatch, getState }: FetchDataType) => (next: any) => (
 
   const { users } = getState();
 
-  const { type } = Reflect.has(action.payload || {}, "type") && action.payload;
-  console.log(action, type);
+  const { type } =
+    Reflect.has(
+      (typeof action.payload === "object" && action.payload) || {},
+      "type"
+    ) && action.payload;
+  console.log({ action, payload: action.payload, type });
 
   switch (type) {
     case INIT:
@@ -32,9 +35,6 @@ const fetchData = ({ dispatch, getState }: FetchDataType) => (next: any) => (
       return next(action);
     case SET_USERS:
       dispatch(fetchUsers());
-      return next(action.payload);
-    case SET_USER:
-      dispatch(fetchUserById(action.payload.id));
       return next(action);
 
     default:

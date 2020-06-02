@@ -20,7 +20,6 @@ const Breadcrumbs: React.FC<BreadcrumbType> = ({ crumbs }) => {
       <Link to="/">
         <span>Main</span>
       </Link>
-      {console.log(history, crumbs)}
       {crumbs && crumbs[0] && <span>/</span>}
 
       {crumbs.map((crumb, index) => (

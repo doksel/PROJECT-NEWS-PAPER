@@ -3,13 +3,30 @@ import styled from "styled-components";
 export const WrapArticle = styled.div`
   width: 100%;
 
+  a {
+    width: 100%;
+  }
+`;
+export const WrapImage = styled.div`
+  width: 100%;
+
   img {
     width: 100%;
     height: auto;
+    transition: all 0.5s;
+  }
+
+  &:hover {
+    img {
+      filter: grayscale(1);
+      transform: scale(1.2);
+      transition: all 0.5s;
+    }
   }
 
   a {
-    width: 100%;
+    display: block;
+    overflow: hidden;
   }
 `;
 
@@ -26,6 +43,12 @@ export const TitleArticle = styled.div`
   font-weight: bold;
   margin: 10px 0;
   color: ${props => props.theme.colors.secondary};
+  transition: all 0.5s;
+
+  &:hover {
+    color: ${props => props.theme.colors.red};
+    transition: all 0.5s;
+  }
 `;
 
 export const Author = styled.div`
@@ -40,6 +63,8 @@ export const Article = styled.div`
   margin: 5px 0;
 `;
 
-export const Info = styled.div`
+export const WrapInfo = styled.div`
   margin: 5px 0;
+  display: flex;
+  color: ${props => props.theme.colors.disabled};
 `;
