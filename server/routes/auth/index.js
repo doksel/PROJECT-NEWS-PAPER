@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import {check, validationResult} from "express-validator";
 
 import {secretJwt} from "../../config";
-import User from "../../models/User";
+import User from "../../models/Users";
 import {sendMail} from "../../common/mailer"
 
 const router = Router();

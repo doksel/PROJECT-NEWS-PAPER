@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import {getTokenFromHeader} from "../../middlewares/helpers";
 import {secretJwt} from "../../config";
 
-import User from "../../models/User";
+import User from "../../models/Users";
 
 const router = Router();
 
