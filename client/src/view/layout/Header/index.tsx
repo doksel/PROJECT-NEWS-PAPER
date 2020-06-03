@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
 import NavMenu from "./NavMenu";
@@ -9,10 +10,15 @@ import ExitIcon from "../../../images/icons/exit.svg";
 import EnterIcon from "../../../images/icons/enter.svg";
 import UserIcon from "../../../images/icons/user.svg";
 
+import { signOut } from "../../../store/createSlices/account";
+
 import { WrapHeader, Profile, WrapLogo } from "./styles";
+
+const token = localStorage.getItem("token");
 
 const Header: React.FC = () => {
   let history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -30,11 +36,14 @@ const Header: React.FC = () => {
         )}
 
         <Profile>
-          {false ? (
+          {token ? (
             <>
               <div>UserName</div>
-              <Icon onClick={() => console.log("exit")} icon={UserIcon} />
-              <Icon onClick={() => {}} icon={ExitIcon} />
+              <Icon
+                onClick={() => history.push("/users/profile")}
+                icon={UserIcon}
+              />
+              <Icon onClick={() => dispatch(signOut())} icon={ExitIcon} />
             </>
           ) : (
             <Icon

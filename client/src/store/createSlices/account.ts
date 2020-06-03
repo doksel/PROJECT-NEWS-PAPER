@@ -36,15 +36,29 @@ const authSlice = createSlice({
       };
     },
     signInSuccess(state, { payload }) {
+      localStorage.setItem("token", payload.token);
       return {
         ...state,
-        profile: { ...payload.profile }
+        token: payload.token
       };
     },
     signUpSuccess(state, { payload }) {
       return {
         ...state,
         token: { ...payload.token }
+      };
+    },
+    getMeSuccess(state, { payload }) {
+      return {
+        ...state,
+        profile: payload.profile
+      };
+    },
+    signOut(state) {
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        ...initialState
       };
     }
   }
@@ -53,7 +67,9 @@ const authSlice = createSlice({
 export const {
   setStateValue,
   signInSuccess,
-  signUpSuccess
+  signUpSuccess,
+  getMeSuccess,
+  signOut
 } = authSlice.actions;
 
 export default authSlice.reducer;
@@ -68,6 +84,7 @@ export const signIn = (value: SignInTypes) => async (
 
     dispatch(signInSuccess(data));
   } catch (error) {
+    localStorage.removeItem("token");
     dispatch(setStateValue({ type: "error", data: false }));
   }
 };
@@ -82,6 +99,20 @@ export const signUp = (value: SignUpTypes) => async (
 
     dispatch(signUpSuccess(data));
   } catch (error) {
+    localStorage.removeItem("token");
+    dispatch(setStateValue({ type: "error", data: false }));
+  }
+};
+
+export const getMe = () => async (dispatch: AppDispatchType) => {
+  try {
+    dispatch(setStateValue({ type: "isLoading", data: true }));
+    const { data } = await api.auth.me();
+    dispatch(setStateValue({ type: "isLoading", data: false }));
+
+    dispatch(signUpSuccess(data));
+  } catch (error) {
+    localStorage.removeItem("token");
     dispatch(setStateValue({ type: "error", data: false }));
   }
 };

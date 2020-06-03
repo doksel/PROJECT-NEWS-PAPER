@@ -38,5 +38,17 @@ export default {
     const data = await axios(config);
 
     return data;
+  },
+
+  me: async () => {
+    let config: AxiosRequestConfig = {
+      method: "GET",
+      baseURL: `${process.env.REACT_APP_SERVER_HOST}/me`,
+      headers: setHeader()
+    };
+
+    const data = await axios(config);
+
+    return data;
   }
 };

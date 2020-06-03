@@ -19,7 +19,8 @@ const UserPage: React.FC = () => {
       <Content>
         <MainTitle>User page</MainTitle>
         <Route path="/users" exact component={Users.list} />
-        <Route path="/users/:id?/review" exact component={Users.review} />
+        <Route path="/users/user/:id?" exact component={Users.review} />
+        <Route path="/users/profile" exact component={Users.profile} />
       </Content>
 
       <Footer />

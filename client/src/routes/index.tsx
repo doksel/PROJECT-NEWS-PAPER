@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import AuthPage from "../view/pages/AuthPage";
@@ -8,8 +8,18 @@ import AboutUsPage from "../view/pages/AboutUs";
 import ContacsPage from "../view/pages/Contacs";
 import UserPage from "../view/pages/UserPage";
 
+import { getMe } from "../store/createSlices/account";
+
 const App: React.FC = () => {
   const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (token) {
+      getMe();
+    }
+  }, []);
+
+  console.log("token", token);
 
   return (
     <div className="main">
@@ -22,8 +32,11 @@ const App: React.FC = () => {
         />
         <Route path="/about-us" exact component={AboutUsPage} />
         <Route path="/contacts" exact component={ContacsPage} />
-        <Route path="/users/:id?/:action?" exact component={UserPage} />
-        {!token && <Route path="/auth/:action?" exact component={AuthPage} />}
+        {token ? (
+          <Route path="/users/:type?/:id?/" exact component={UserPage} />
+        ) : (
+          <Route path="/auth/:action?" exact component={AuthPage} />
+        )}
         <Redirect to="/" />
       </Switch>
     </div>
