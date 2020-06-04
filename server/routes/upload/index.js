@@ -4,10 +4,23 @@ import multer from "multer";
 const router = Router();
 const upload = multer({ dest: 'uploads/' });
 
-router.post('/avatar', upload.single('avatar'), (req, res) => {
-    let filedata = req.file;
-    console.log("filedata",filedata);
-    if(!filedata)
+const fileFilter = (req, file, cb) => {
+  
+    if(file.mimetype === "image/png" || 
+    file.mimetype === "image/jpg"|| 
+    file.mimetype === "image/jpeg"){
+        cb(null, true);
+    }
+    else{
+        cb(null, false);
+    }
+}
+
+router.post('/avatar', multer({ dest: 'uploads/', fileFilter }).single('avatar'), (req, res) => {
+    let file = req.file;
+
+    console.log("file",file);
+    if(!file)
         res.send("Ошибка при загрузке файла");
     else
         res.send("Файл загружен");

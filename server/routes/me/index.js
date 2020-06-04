@@ -14,7 +14,7 @@ const router = Router();
  *   get:
  *     tags:
  *       - Me
- *     description: Get your account
+ *     description: Get your profile
  *     produces:
  *       - application/json
  *     responses:
@@ -45,10 +45,10 @@ async (req,res)=>{
 /**
  * @swagger
  * /v1/api/me/edit:
- *   patch:
+ *   put:
  *     tags:
  *       - Me
- *     description: Edit your account
+ *     description: Edit your profile
  *     produces:
  *       - application/json
  *     parameters:
