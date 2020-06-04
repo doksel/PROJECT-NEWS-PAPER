@@ -4,7 +4,7 @@ import { reduxForm, InjectedFormProps } from "redux-form";
 
 import Form from "./Form";
 
-import { signIn } from "../../../../store/createSlices/account";
+import { signIn, AccountType } from "../../../../store/createSlices/account";
 
 import { WrapForm } from "../styles";
 
@@ -16,7 +16,7 @@ export type ValuesSignInTypes = {
 };
 
 type RootState = {
-  account: any;
+  account: AccountType;
 };
 
 let LoginPage: React.FC<InjectedFormProps<ValuesSignInTypes, CustomProps> &
@@ -25,7 +25,6 @@ let LoginPage: React.FC<InjectedFormProps<ValuesSignInTypes, CustomProps> &
   const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
   const isLoading = useTypedSelector(state => state.account.isLoading);
-  const message = useTypedSelector(state => state.account.message);
   const error = useTypedSelector(state => state.account.error);
 
   const formSubmit = (e: FormEvent<HTMLFormElement>): void => {
@@ -36,18 +35,15 @@ let LoginPage: React.FC<InjectedFormProps<ValuesSignInTypes, CustomProps> &
     })();
   };
 
-  // useEffect(() => {
-  //   dispatch({ type: "RESET_FORM" });
-  // }, []);
+  useEffect(() => {
+    return () => {
+      dispatch({ type: "RESET_FORM" });
+    };
+  }, []);
 
   return (
     <WrapForm>
-      <Form
-        onSubmit={formSubmit}
-        loading={isLoading}
-        message={message}
-        error={error}
-      />
+      <Form onSubmit={formSubmit} loading={isLoading} error={error} />
       />
     </WrapForm>
   );

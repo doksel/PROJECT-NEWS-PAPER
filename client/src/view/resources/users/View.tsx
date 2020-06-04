@@ -1,9 +1,13 @@
 import React from "react";
 
-import { Wrapper } from "./styles";
+import { Wrapper, MainTitle } from "./styles";
 
 const View: React.FC = () => {
-  return <Wrapper>About User</Wrapper>;
+  return (
+    <Wrapper>
+      <MainTitle>About User page</MainTitle>
+    </Wrapper>
+  );
 };
 
 export default View;

@@ -28,7 +28,6 @@ let RegisterPage: React.FC<InjectedFormProps<ValuesSignUpTypes, CustomProps> &
   const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
   const isLoading = useTypedSelector(state => state.account.isLoading);
-  const message = useTypedSelector(state => state.account.message);
   const error = useTypedSelector(state => state.account.error);
 
   const formSubmit = (e: FormEvent<HTMLFormElement>): void => {
@@ -45,12 +44,7 @@ let RegisterPage: React.FC<InjectedFormProps<ValuesSignUpTypes, CustomProps> &
 
   return (
     <WrapForm>
-      <Form
-        onSubmit={formSubmit}
-        loading={isLoading}
-        message={message}
-        error={error}
-      />
+      <Form onSubmit={formSubmit} loading={isLoading} error={error} />
     </WrapForm>
   );
 };

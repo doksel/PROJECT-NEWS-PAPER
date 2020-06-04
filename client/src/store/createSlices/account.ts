@@ -4,21 +4,21 @@ import api from "../../api";
 
 import { AppDispatchType } from "..";
 
-type AccountType = {
+export type ProfileType = {
   firstName: string;
   lastName: string;
   email: string;
   avatar: string;
 };
 
-type InitialStateType = {
-  profile: AccountType | null;
+export type AccountType = {
+  profile: ProfileType | null;
   token: string | null;
   isLoading: boolean;
   error: string;
 };
 
-const initialState: InitialStateType = {
+const initialState: AccountType = {
   profile: null,
   token: null,
   isLoading: false,

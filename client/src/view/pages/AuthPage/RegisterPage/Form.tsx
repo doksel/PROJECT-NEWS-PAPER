@@ -15,16 +15,10 @@ import {
 type CustomPropsType = {
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
   loading: boolean;
-  message: string;
-  error: boolean;
+  error: string;
 };
 
-const Form: React.FC<{} & CustomPropsType> = ({
-  loading,
-  onSubmit,
-  message,
-  error
-}) => {
+const Form: React.FC<{} & CustomPropsType> = ({ loading, onSubmit, error }) => {
   return (
     <form onSubmit={onSubmit} autoComplete="off">
       <h1>Sign up</h1>
@@ -71,7 +65,7 @@ const Form: React.FC<{} & CustomPropsType> = ({
         validate={[required, checkPasswords]}
       />
 
-      {message && <div className={error ? "error" : "success"}>{message}</div>}
+      {error && <div className="error">{error}</div>}
 
       <Button htmlType="submit" type="primary" loading={loading} text="Enter" />
 

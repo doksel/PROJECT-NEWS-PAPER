@@ -44,8 +44,8 @@ const App: React.FC = () => {
         />
         <Route path="/about-us" exact component={AboutUsPage} />
         <Route path="/contacts" exact component={ContacsPage} />
-        {token ? (
-          <Route path="/users/:type?/:id?/" exact component={UserPage} />
+        {tokenLocal ? (
+          <Route path="/users/:type?/:id?" exact component={UserPage} />
         ) : (
           <Route path="/auth/:action?" exact component={AuthPage} />
         )}

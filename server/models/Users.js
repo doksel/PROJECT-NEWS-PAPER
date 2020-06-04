@@ -5,7 +5,7 @@ const schema = new Schema ({
   password: {type: String, required: true},
   firstName: {type: String, required: true},
   lastName: {type: String, required: true},
-  avatar: [{type: Types.ObjectId, ref: "Foto"}]   
+  avatar: {type: String}   
 })
  
 schema.method('transform', function() {

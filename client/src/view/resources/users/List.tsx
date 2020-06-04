@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { fetchUsers } from "../../../store/createSlices/users";
 
-import { Wrapper } from "./styles";
+import { Wrapper, MainTitle } from "./styles";
 
 const List: React.FC = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,12 @@ const List: React.FC = () => {
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
-  return <Wrapper>List Users</Wrapper>;
+
+  return (
+    <Wrapper>
+      <MainTitle>List Users page</MainTitle>
+    </Wrapper>
+  );
 };
 
 export default List;
