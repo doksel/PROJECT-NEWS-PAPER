@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 const connectDB = () => {
     return new Promise((resolve, reject) => {
         mongoose.Promise = global.Promise;
+        mongoose.set('useFindAndModify', false);
         mongoose.set('debug', isProduction);
 
         mongoose.connection

@@ -6,6 +6,7 @@ import { Field, reduxForm, InjectedFormProps } from "redux-form";
 import Button from "../../common/Button";
 import Input from "../../common/Input";
 
+import { updateMe } from "../../../store/createSlices/account";
 import { UserTypes, CustomProps } from "./types";
 import { required, email } from "../../../helpers/validate";
 
@@ -17,20 +18,20 @@ type RootState = {
 
 const Edit: React.FC<InjectedFormProps<UserTypes, CustomProps> &
   CustomProps> = ({ handleSubmit, initialize }) => {
+  const dispatch = useDispatch();
   const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
   const { profile, isLoading } = useTypedSelector(state => state.account);
+  useEffect(() => {
+    initialize(profile);
+  }, []);
 
   const formSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     handleSubmit((values: UserTypes) => {
-      console.log("values", values);
+      dispatch(updateMe(values));
     })();
   };
-
-  useEffect(() => {
-    initialize(profile);
-  }, []);
 
   return (
     <Wrapper>

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SignInTypes, SignUpTypes } from "../../api/auth";
+import { SignInTypes } from "../../view/pages/AuthPage/LoginPage";
+import { SignUpTypes } from "../../view/pages/AuthPage/RegisterPage";
 import api from "../../api";
 
 import { AppDispatchType } from "..";

@@ -10,7 +10,7 @@ import { WrapForm } from "../styles";
 
 interface CustomProps {}
 
-export type ValuesSignInTypes = {
+export type SignInTypes = {
   email: string;
   password: string;
 };
@@ -19,7 +19,7 @@ type RootState = {
   account: AccountType;
 };
 
-let LoginPage: React.FC<InjectedFormProps<ValuesSignInTypes, CustomProps> &
+let LoginPage: React.FC<InjectedFormProps<SignInTypes, CustomProps> &
   CustomProps> = ({ handleSubmit }) => {
   const dispatch = useDispatch();
   const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -30,7 +30,7 @@ let LoginPage: React.FC<InjectedFormProps<ValuesSignInTypes, CustomProps> &
   const formSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    handleSubmit((values: ValuesSignInTypes) => {
+    handleSubmit((values: SignInTypes) => {
       dispatch(signIn(values));
     })();
   };
@@ -49,6 +49,6 @@ let LoginPage: React.FC<InjectedFormProps<ValuesSignInTypes, CustomProps> &
   );
 };
 
-export default reduxForm<ValuesSignInTypes, CustomProps>({
+export default reduxForm<SignInTypes, CustomProps>({
   form: "authForm"
 })(LoginPage);

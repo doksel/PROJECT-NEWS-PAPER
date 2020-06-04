@@ -1,17 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { setHeader } from "./index";
 
-export type SignInTypes = {
-  email: string;
-  password: string;
-};
-
-export type SignUpTypes = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-};
+import { SignInTypes } from "../view/pages/AuthPage/LoginPage";
+import { SignUpTypes } from "../view/pages/AuthPage/RegisterPage";
+import { UserTypes } from "../view/resources/users/types";
 
 export default {
   signIn: async (value: SignInTypes) => {
@@ -45,6 +37,19 @@ export default {
       method: "GET",
       baseURL: `${process.env.REACT_APP_SERVER_HOST}/me`,
       headers: setHeader()
+    };
+
+    const data = await axios(config);
+
+    return data;
+  },
+
+  updateProfile: async (value: UserTypes) => {
+    let config: AxiosRequestConfig = {
+      method: "PUT",
+      baseURL: `${process.env.REACT_APP_SERVER_HOST}/me/edit`,
+      headers: setHeader(),
+      data: value
     };
 
     const data = await axios(config);

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SignInTypes, SignUpTypes } from "../../api/auth";
+import { SignInTypes } from "../../view/pages/AuthPage/LoginPage";
+import { SignUpTypes } from "../../view/pages/AuthPage/RegisterPage";
+import { UserTypes } from "../../view/resources/users/types";
 import api from "../../api";
 
 import { AppDispatchType } from "..";
@@ -108,6 +110,21 @@ export const getMe = () => async (dispatch: AppDispatchType) => {
   try {
     dispatch(setStateValue({ type: "isLoading", data: true }));
     const { data } = await api.auth.me();
+
+    dispatch(getMeSuccess(data));
+  } catch (error) {
+    localStorage.removeItem("token");
+    dispatch(setStateValue({ type: "error", data: false }));
+  }
+  dispatch(setStateValue({ type: "isLoading", data: false }));
+};
+
+export const updateMe = (value: UserTypes) => async (
+  dispatch: AppDispatchType
+) => {
+  try {
+    dispatch(setStateValue({ type: "isLoading", data: true }));
+    const { data } = await api.auth.updateProfile(value);
 
     dispatch(getMeSuccess(data));
   } catch (error) {
