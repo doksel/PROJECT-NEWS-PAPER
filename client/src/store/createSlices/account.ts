@@ -80,13 +80,13 @@ export const signIn = (value: SignInTypes) => async (
   try {
     dispatch(setStateValue({ type: "isLoading", data: true }));
     const { data } = await api.auth.signIn(value);
-    dispatch(setStateValue({ type: "isLoading", data: false }));
 
     dispatch(signInSuccess(data));
   } catch (error) {
     localStorage.removeItem("token");
     dispatch(setStateValue({ type: "error", data: false }));
   }
+  dispatch(setStateValue({ type: "isLoading", data: false }));
 };
 
 export const signUp = (value: SignUpTypes) => async (
@@ -95,24 +95,24 @@ export const signUp = (value: SignUpTypes) => async (
   try {
     dispatch(setStateValue({ type: "isLoading", data: true }));
     const { data } = await api.auth.signUp(value);
-    dispatch(setStateValue({ type: "isLoading", data: false }));
 
     dispatch(signUpSuccess(data));
   } catch (error) {
     localStorage.removeItem("token");
     dispatch(setStateValue({ type: "error", data: false }));
   }
+  dispatch(setStateValue({ type: "isLoading", data: false }));
 };
 
 export const getMe = () => async (dispatch: AppDispatchType) => {
   try {
     dispatch(setStateValue({ type: "isLoading", data: true }));
     const { data } = await api.auth.me();
-    dispatch(setStateValue({ type: "isLoading", data: false }));
 
-    dispatch(signUpSuccess(data));
+    dispatch(getMeSuccess(data));
   } catch (error) {
     localStorage.removeItem("token");
     dispatch(setStateValue({ type: "error", data: false }));
   }
+  dispatch(setStateValue({ type: "isLoading", data: false }));
 };

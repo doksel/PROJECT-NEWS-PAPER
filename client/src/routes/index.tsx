@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import AuthPage from "../view/pages/AuthPage";
@@ -10,16 +11,27 @@ import UserPage from "../view/pages/UserPage";
 
 import { getMe } from "../store/createSlices/account";
 
+type RootState = {
+  account: any;
+};
+
 const App: React.FC = () => {
-  const token = localStorage.getItem("token");
+  const tokenLocal = localStorage.getItem("token");
+  const dispatch = useDispatch();
+  const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+  const { profile, token } = useTypedSelector(state => state.account);
 
   useEffect(() => {
-    if (token) {
-      getMe();
+    if (tokenLocal) {
+      dispatch(getMe());
     }
   }, []);
 
-  console.log("token", token);
+  useEffect(() => {
+    if (tokenLocal) {
+      !profile && token && dispatch(getMe());
+    }
+  }, [profile, token]);
 
   return (
     <div className="main">

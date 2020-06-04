@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
 import NavMenu from "./NavMenu";
@@ -16,9 +16,15 @@ import { WrapHeader, Profile, WrapLogo } from "./styles";
 
 const token = localStorage.getItem("token");
 
+type RootState = {
+  account: any;
+};
+
 const Header: React.FC = () => {
   let history = useHistory();
   const dispatch = useDispatch();
+  const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+  const { profile } = useTypedSelector(state => state.account);
 
   return (
     <>
@@ -36,7 +42,7 @@ const Header: React.FC = () => {
         )}
 
         <Profile>
-          {token ? (
+          {profile ? (
             <>
               <div>UserName</div>
               <Icon
