@@ -5,7 +5,7 @@ import Category from "../../components/Category";
 
 import { fetchUsers } from "../../../store/createSlices/users";
 
-import { Wrapper } from "./styles";
+import { Wrapper, MainTitle } from "./styles";
 
 const List: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,10 +14,11 @@ const List: React.FC = () => {
     console.log("Welcom to List Categories");
   }, []);
   return (
-    <>
-      <Wrapper>List Categories</Wrapper>
+    <Wrapper>
+      <MainTitle>List Categories</MainTitle>
+
       <Category />
-    </>
+    </Wrapper>
   );
 };
 

@@ -1,9 +1,22 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
-import { Wrapper } from "./styles";
+import Category from "../../components/Category";
+
+import { Wrapper, MainTitle } from "./styles";
 
 const View: React.FC = () => {
-  return <Wrapper>View Categoies</Wrapper>;
+  let history = useHistory();
+  const titles = history.location.pathname.split("/");
+  const titlePage = titles[titles.length - 1].toUpperCase();
+
+  return (
+    <Wrapper>
+      <MainTitle>{titlePage}</MainTitle>
+
+      {/* <Category /> */}
+    </Wrapper>
+  );
 };
 
 export default View;

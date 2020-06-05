@@ -22,9 +22,9 @@ export const menuLinks = [
   { name: "Home", to: "/" },
   { name: "About Us", to: "/about-us" },
   { name: "Categories", to: "/categories" },
-  { name: "Business", to: "/business" },
-  { name: "Politics", to: "/politics" },
-  { name: "Travel", to: "/travel" },
-  { name: "Sports", to: "/sports" },
+  { name: "Business", to: "/categories/business" },
+  { name: "Politics", to: "/categories/politics" },
+  { name: "Travel", to: "/categories/travel" },
+  { name: "Sports", to: "/categories/sports" },
   { name: "Contacts", to: "/contacts" }
 ];
