@@ -1,15 +1,17 @@
 import React, { FormEvent } from "react";
 import { useDispatch } from "react-redux";
-import { reduxForm, InjectedFormProps } from "redux-form";
+import { Field, reduxForm, InjectedFormProps } from "redux-form";
 
 import Header from "../../layout/Header";
 import Content from "../../layout/Content";
 import Footer from "../../layout/Footer";
-
-import Button from "../../common/Button";
 import Breadcrumbs from "../../components/Breadcrumbs";
 
+import Button from "../../common/Button";
+import FileUploader from "../../common/FileUploader";
+
 import api from "../../../api";
+import { required } from "../../../helpers/validate";
 
 import { MainTitle } from "./styles";
 
@@ -34,16 +36,6 @@ const AboutUsPage: React.FC<InjectedFormProps<ValuesTypes, CustomProps> &
     })();
   };
 
-  const onChange = (e: any) => {
-    let formData = new FormData();
-
-    for (let i = 0; i < e.target.files.length; i++) {
-      formData.append(`avatar`, e.target.files[i]);
-    }
-
-    api.fileUpload.uploadFile(formData);
-  };
-
   return (
     <>
       <Header />
@@ -52,9 +44,16 @@ const AboutUsPage: React.FC<InjectedFormProps<ValuesTypes, CustomProps> &
       <Content>
         <MainTitle>Contacts Page</MainTitle>
         <form onSubmit={formSubmit}>
-          <label>Файл</label>
-          <input type="file" name="filedata" onChange={onChange} />
-          <Button htmlType="submit" type="primary" text="Enter" />
+          <Field
+            name="avatar"
+            component={FileUploader}
+            label="Avatar"
+            validate={[required]}
+            icon="far fa-user"
+            uploadReq={api.fileUpload.uploadFile}
+          />
+
+          <Button htmlType="submit" type="primary" text="Send" />
         </form>
       </Content>
 

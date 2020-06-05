@@ -84,18 +84,18 @@ const FileUploader: React.FC<FileUploaderTypes> = ({
       let formData = new FormData();
 
       for (let i = 0; i < e.target.files.length; i++) {
-        formData.append(`file${i + 1}`, e.target.files[i]);
+        formData.append(`avatar`, e.target.files[i]);
       }
 
       setLoading(true);
 
-      // uploadReq(formData)
-      //   .then(res => {
-      //     onSuccess(res);
-      //     e.target.value = null;
-      //   })
-      //   .catch(() => message.error())
-      //   .finally(() => setLoading(false));
+      uploadReq(formData)
+        .then((res: any) => {
+          onSuccess(res);
+          e.target.value = null;
+        })
+        .catch(() => message.error())
+        .finally(() => setLoading(false));
     }
   };
 
@@ -140,7 +140,7 @@ const FileUploader: React.FC<FileUploaderTypes> = ({
         files={files}
       />
 
-      {touched && error && <span className="error">{error}</span>}
+      {touched && error && <small className="error">{error}</small>}
     </div>
   );
 };

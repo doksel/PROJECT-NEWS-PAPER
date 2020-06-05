@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import qs from "qs";
-import { setHeader, fakeApi } from "./index";
+import { setHeader } from "./index";
 
 export type ParamsUsersType = {
   order?: string;
@@ -15,13 +15,10 @@ const defaultParams = {
 };
 
 export default {
-  getUsers: async (params: ParamsUsersType = defaultParams) => {
+  getAllPosts: async () => {
     let config: AxiosRequestConfig = {
       method: "GET",
-      // baseURL: `${process.env.REACT_APP_SERVER_HOST}/users/all?${qs.stringify(
-      //   params
-      // )}`,
-      baseURL: `${fakeApi}/users?${qs.stringify(params)}`,
+      baseURL: `${process.env.REACT_APP_SERVER_HOST}/posts`,
       headers: setHeader()
     };
 
@@ -30,11 +27,22 @@ export default {
     return data;
   },
 
-  getUserById: async (id: number) => {
+  getPostsUserById: async (userId: number) => {
     let config: AxiosRequestConfig = {
       method: "GET",
-      // baseURL: `${process.env.REACT_APP_SERVER_HOST}/users/user/${id}`,
-      baseURL: `${fakeApi}/users/${id}`,
+      baseURL: `${process.env.REACT_APP_SERVER_HOST}/users/${userId}/posts`,
+      headers: setHeader()
+    };
+
+    const data = await axios(config);
+
+    return data;
+  },
+
+  getPostById: async (id: number) => {
+    let config: AxiosRequestConfig = {
+      method: "GET",
+      baseURL: `${process.env.REACT_APP_SERVER_HOST}/posts/${id}`,
       headers: setHeader()
     };
 

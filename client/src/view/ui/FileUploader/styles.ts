@@ -2,37 +2,37 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: max-content;
+  margin: 10px 0;
 `;
 
 export const Label = styled.label`
   position: relative;
-  background-color: #cce0ff;
-  border: @primary-color 1px solid;
+  background-color: ${props => props.theme.colors.red};
+  border: ${props => props.theme.colors.red} 1px solid;
   border-radius: 25px;
   position: relative;
   padding-left: 40px;
   padding-right: 20px;
   cursor: pointer;
   line-height: 2.5;
-  color: @primary-color;
+  color: #fff;
   font-size: 100%;
   display: flex !important;
   align-items: center;
   min-height: 44px;
   transition: 0.2s ease-in-out;
-  margin-top: 20px;
+  margin: 10px 0;
   outline: none;
 
   &.disabled {
-    background-color: @second-text-color;
-    color: #f5f7fa;
-    border: solid 2px @second-text-color;
+    background-color: ${props => props.theme.colors.red_hover};
+    border: solid 1px ${props => props.theme.colors.red_hover};
     cursor: not-allowed;
   }
 
   &:hover {
-    background-color: @primary-color;
-    color: #f5f7fa;
+    background-color: ${props => props.theme.colors.red_hover};
+    border: solid 1px ${props => props.theme.colors.red_hover};
 
     .icon {
       filter: brightness(0) invert(1);
@@ -41,8 +41,7 @@ export const Label = styled.label`
 
   &:focus,
   &:active {
-    background-color: #234161 !important;
-    color: #f5f7fa !important;
+    background-color: ${props => props.theme.colors.red_hover} !important;
 
     .icon {
       filter: brightness(0) invert(1);

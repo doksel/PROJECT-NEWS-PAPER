@@ -32,3 +32,42 @@ code {
   max-width: 1140px;
   margin: 0 auto;
 }
+
+.error {
+  color: crimson;
+}
+
+/* notification's styles */
+.notification {
+  background: white;
+  border-left: 1rem solid #8a8a8a;
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 25rem;
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  transition: all 0.5s;
+}
+
+.notification.success {
+  border-color: limegreen;
+}
+
+.notification.warning {
+  border-color: #f99d1d;
+}
+
+.notification.error {
+  border-color: crimson;
+}
+
+.notification.active {
+  top: 0;
+  transition: all 0.5s;
+}

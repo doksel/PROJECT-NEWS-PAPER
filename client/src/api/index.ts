@@ -2,9 +2,12 @@ import axios from "axios";
 
 import auth from "./auth";
 import users from "./users";
+import articles from "./articles";
 import fileUpload from "./fileUpload";
 
 import store from "../store";
+
+export const fakeApi = "https://reqres.in/api";
 
 export const CancelToken = axios.CancelToken;
 
@@ -23,5 +26,6 @@ export const setHeader = () => {
 export default {
   auth,
   users,
+  articles,
   fileUpload
 };

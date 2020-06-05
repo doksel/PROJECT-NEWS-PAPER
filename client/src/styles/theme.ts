@@ -18,6 +18,7 @@ export const theme = {
     success: "limegreen",
     error: "crimson",
     red: "crimson",
+    red_hover: "lightcoral",
     disabled: "darkgrey",
     main_hover: "lightslategray",
     secondary_hover: "darkgray",

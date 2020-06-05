@@ -2,8 +2,8 @@ import React from "react";
 
 import Icon from "../../common/Icon";
 import Loader from "../../components/Loader";
-import AddIcon from "../../images/icons/add.svg";
-import CloseIcon from "../../images/icons/close-big.svg";
+import AddIcon from "../../../images/icons/add.svg";
+import CloseIcon from "../../../images/icons/close-big.svg";
 
 import { Wrapper, Label } from "./styles";
 
@@ -50,9 +50,13 @@ const FileUploaderUI: React.FC<FileUploaderTypes> = ({
       {loading ? <Loader /> : label}
     </Label>
 
-    <div>Support file's formats: {accepts}</div>
+    <div>
+      <small>Support file's formats: {accepts}</small>
+    </div>
 
-    <div>Size no more: {maxFileSize ? maxFileSize / 1000000 : 10} Mb</div>
+    <div>
+      <small>Size no more: {maxFileSize ? maxFileSize / 1000000 : 10} Mb</small>
+    </div>
 
     <div>
       {files.map((file: any, index: number) => (
