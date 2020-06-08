@@ -86,7 +86,7 @@ export const signIn = (value: SignInTypes) => async (
     dispatch(signInSuccess(data));
   } catch (error) {
     localStorage.removeItem("token");
-    dispatch(setStateValue({ type: "error", data: false }));
+    dispatch(setStateValue({ type: "error", data: error.response.data.error }));
   }
   dispatch(setStateValue({ type: "isLoading", data: false }));
 };

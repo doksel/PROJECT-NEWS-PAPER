@@ -11,7 +11,7 @@ const List: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("Welcom to List Categories");
+    // console.log("Welcom to List Categories");
   }, []);
   return (
     <Wrapper>

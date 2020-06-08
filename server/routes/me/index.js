@@ -20,7 +20,7 @@ const router = Router();
  *       404:
  *         description: Get failed, entity not found.
  */
-router.get('/', editProfile),
+router.get('/', me),
 
 /**
  * @swagger
@@ -57,7 +57,7 @@ router.get('/', editProfile),
  *       400:
  *         description: Update failed, validate exception.
  */
-router.put('/edit', me )
+router.put('/edit', editProfile )
 
 
 export default router;

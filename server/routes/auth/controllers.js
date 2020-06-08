@@ -53,7 +53,7 @@ export const signUp = async (req,res)=>{
     res.status(201).json({message: "User was created"})
 
   }catch (err) {
-    res.status(500).json({message:"Error 500", errors: err})
+    res.status(500).json({error:"Error 500", errors: err})
   }
 }
 
@@ -64,7 +64,7 @@ export const signIn = async (req,res)=>{
     if(!errors.isEmpty()) {
       return res.status(400).json({
         errors: errors.array(),
-        message: "Enter into system isn't correct"
+        error: "Enter into system isn't correct"
       })
     }
 
@@ -72,13 +72,13 @@ export const signIn = async (req,res)=>{
     const user = await User.findOne({email});
     
     if(!user){
-      return res.status(400).json({message: "User not found"})
+      return res.status(400).json({error: "User not found"})
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     
     if(!isMatch){
-      return res.status(400).json({message: "Enter correct password"})
+      return res.status(400).json({error: "Enter correct password"})
     }
 
     const token = jwt.sign(
@@ -89,20 +89,20 @@ export const signIn = async (req,res)=>{
 
     res.json({token, userId: user.id})
   }catch (err) {
-    res.status(500).json({message:"Error 500", errors: err})
+    res.status(500).json({error:"Error 500", errors: err})
   }
 };
 
 export const resetPassword = async (req,res)=>{
   try{
     if(!req.body.email){
-      return res.status(400).json({message: "User not found"})
+      return res.status(400).json({error: "User not found"})
     }
     const {email}=req.body; 
     const user = await User.findOne({email});
 
     if(!user){
-      return res.status(400).json({message: "Email is not found"})
+      return res.status(400).json({error: "Email is not found"})
     }
 
     const dataEmail = {
@@ -115,7 +115,7 @@ export const resetPassword = async (req,res)=>{
 
     res.json({reseted: true});
   }catch(err){
-    res.status(500).json({message:"Error 500", errors: err})
+    res.status(500).json({error:"Error 500", errors: err})
   }
   
 }

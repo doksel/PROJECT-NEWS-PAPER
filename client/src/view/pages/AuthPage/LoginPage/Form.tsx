@@ -4,8 +4,11 @@ import { Field } from "redux-form";
 
 import Button from "../../../common/Button";
 import Input from "../../../common/Input";
+import Logo from "../../../../images/logo.png";
 
 import { required } from "../../../../helpers/validate";
+
+import { WrapLogo } from "../styles";
 
 type CustomPropsType = {
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
@@ -16,6 +19,10 @@ type CustomPropsType = {
 const Form: React.FC<{} & CustomPropsType> = ({ loading, onSubmit, error }) => {
   return (
     <form onSubmit={onSubmit} autoComplete="off">
+      <WrapLogo>
+        <img src={Logo} alt="logo" />
+      </WrapLogo>
+
       <h1>Sing in</h1>
 
       <Field

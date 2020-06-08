@@ -45,3 +45,15 @@ export const Title = styled.div`
   justify-content: center;
   width: max-content;
 `;
+
+export const WrapLogo = styled.div`
+  width: 250px;
+  padding: 0px 10px 20px;
+  // background: ${props => props.theme.colors.disabled};
+
+  img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 0px 10px ${props => props.theme.colors.primary});
+  }
+`;

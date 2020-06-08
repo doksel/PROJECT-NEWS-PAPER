@@ -55,7 +55,7 @@ export const fetchUsers = (params?: ParamsUsersType) => async (
     const { data } = await api.users.getUsers(params);
     dispatch(getUsersSuccess(data));
   } catch (error) {
-    dispatch(getUsersFailed(error.toString()));
+    dispatch(getUsersFailed(error.response && error.response.data.error));
   }
 };
 
@@ -66,6 +66,6 @@ export const fetchUserById = (id: number) => async (
     const { data } = await api.users.getUserById(id);
     dispatch(getUsersSuccess(data));
   } catch (error) {
-    dispatch(getUsersFailed(error.toString()));
+    dispatch(getUsersFailed(error.response.data.error));
   }
 };

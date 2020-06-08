@@ -11,13 +11,13 @@ export const me = async (req,res)=>{
     const user = await User.findById(userId) 
         
     if(!user){
-      return res.status(400).json({message: "User not found"})
+      return res.status(400).json({error: "User not found"})
     }
     
     res.json({profile: user})
 
   }catch (err) {
-    res.status(500).json({message:"Error 500", errors: err})
+    res.status(500).json({error:"Error 500", errors: err})
   }
 };
 
@@ -29,12 +29,12 @@ export const editProfile = async (req,res)=>{
     const user = await User.findOneAndUpdate(userId, newProfile , {new: true}); 
         
     if(!user){
-      return res.status(400).json({message: "User not found"})
+      return res.status(400).json({error: "User not found"})
     }
     
     res.json({profile: user})
 
   }catch (err) {
-    res.status(500).json({message:"Error 500", errors: err})
+    res.status(500).json({error:"Error 500", errors: err})
   }
 }

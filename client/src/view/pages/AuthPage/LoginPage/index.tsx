@@ -44,7 +44,6 @@ let LoginPage: React.FC<InjectedFormProps<SignInTypes, CustomProps> &
   return (
     <WrapForm>
       <Form onSubmit={formSubmit} loading={isLoading} error={error} />
-      />
     </WrapForm>
   );
 };

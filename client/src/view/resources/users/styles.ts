@@ -12,3 +12,11 @@ export const MainTitle = styled.h1`
   justify-content: center;
   width: max-content;
 `;
+
+export const Avatar = styled.div`
+  width: 50px;
+  margin: 10px 0;
+  img {
+    width: 100%;
+  }
+`;

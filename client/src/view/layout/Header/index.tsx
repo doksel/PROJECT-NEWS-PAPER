@@ -13,7 +13,7 @@ import UserIcon from "../../../images/icons/user.svg";
 import { signOut } from "../../../store/createSlices/account";
 
 import { WrapHeader, Profile, WrapLogo } from "./styles";
-
+import LoadingBar from "../../components/LoaderLineBar/LoaderLineBar";
 const token = localStorage.getItem("token");
 
 type RootState = {
@@ -44,7 +44,7 @@ const Header: React.FC = () => {
         <Profile>
           {profile ? (
             <>
-              <div>UserName</div>
+              <div>{profile && profile.firstName}</div>
               <Icon
                 onClick={() => history.push("/users/profile")}
                 icon={UserIcon}
@@ -59,7 +59,10 @@ const Header: React.FC = () => {
           )}
         </Profile>
       </WrapHeader>
+
       <NavMenu />
+
+      <LoadingBar />
     </>
   );
 };

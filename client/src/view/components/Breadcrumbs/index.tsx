@@ -14,6 +14,8 @@ type BreadcrumbType = {
 
 const Breadcrumbs: React.FC<BreadcrumbType> = ({ crumbs }) => {
   let history = useHistory();
+  console.log(crumbs);
+  console.log(history.location);
 
   return (
     <WrapBreadcrumb>
@@ -27,7 +29,7 @@ const Breadcrumbs: React.FC<BreadcrumbType> = ({ crumbs }) => {
           {history.location.pathname === crumb.to ? (
             <span>{crumb.name}</span>
           ) : (
-            <Link to="/">
+            <Link to={crumb.to}>
               <span>{crumb.name}</span>
             </Link>
           )}

@@ -1,4 +1,5 @@
 import React, { FormEvent, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import { reduxForm, InjectedFormProps } from "redux-form";
 
@@ -24,6 +25,7 @@ type RootState = {
 
 let RegisterPage: React.FC<InjectedFormProps<SignUpTypes, CustomProps> &
   CustomProps> = ({ handleSubmit }) => {
+  let history = useHistory();
   const dispatch = useDispatch();
   const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
@@ -35,6 +37,7 @@ let RegisterPage: React.FC<InjectedFormProps<SignUpTypes, CustomProps> &
 
     handleSubmit((values: SignUpTypes) => {
       dispatch(signUp(values));
+      history.push("/auth/sign-in");
     })();
   };
 

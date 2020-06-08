@@ -4,6 +4,9 @@ import { Field } from "redux-form";
 
 import Button from "../../../common/Button";
 import Input from "../../../common/Input";
+import Logo from "../../../../images/logo.png";
+
+import { WrapLogo } from "../styles";
 
 import {
   required,
@@ -21,6 +24,10 @@ type CustomPropsType = {
 const Form: React.FC<{} & CustomPropsType> = ({ loading, onSubmit, error }) => {
   return (
     <form onSubmit={onSubmit} autoComplete="off">
+      <WrapLogo>
+        <img src={Logo} alt="logo" />
+      </WrapLogo>
+
       <h1>Sign up</h1>
 
       <Field

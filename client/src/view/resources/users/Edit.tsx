@@ -3,8 +3,9 @@ import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Field, reduxForm, InjectedFormProps } from "redux-form";
 
-import Button from "../../common/Button";
 import Input from "../../common/Input";
+import FileUploader from "../../common/FileUploader";
+import Button from "../../common/Button";
 
 import { updateMe } from "../../../store/createSlices/account";
 import { UserTypes, CustomProps } from "./types";
@@ -59,6 +60,13 @@ const Edit: React.FC<InjectedFormProps<UserTypes, CustomProps> &
           label="email"
           placeholder="Enter your email"
           validate={[required, email]}
+        />
+
+        <Field
+          name="avatar"
+          component={FileUploader}
+          label="Avatar"
+          placeholder="Enter your avatar"
         />
 
         <Button
