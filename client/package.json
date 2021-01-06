@@ -21,7 +21,7 @@
     "@types/redux-form": "^8.2.6",
     "@types/styled-components": "^5.1.0",
     "@types/webpack-env": "^1.15.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
